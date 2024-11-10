@@ -12,9 +12,10 @@
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen">
 
 	<!-- VideoJS  -->
-	<link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
-	<script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
-	<script src="https://unpkg.com/@videojs/http-streaming@2.10.3/dist/videojs-http-streaming.min.js"></script>
+	<link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+	<script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+	<!-- Included since Video.js 7 per https://www.npmjs.com/package/@leonchabbey/rio-videojs-http-streaming -->
+	<!-- <script src="https://unpkg.com/@videojs/http-streaming@2.10.3/dist/videojs-http-streaming.min.js"></script> -->
 
 </head>
 
@@ -46,7 +47,11 @@
 					type: 'application/x-mpegURL'
 				});
 			</script>
-
+			<p class="vjs-no-js">
+				To view this video please enable JavaScript, and consider upgrading to a
+				web browser that
+				<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+			</p>
 
 		</div>
 		<br>
