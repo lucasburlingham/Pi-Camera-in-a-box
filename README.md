@@ -8,17 +8,20 @@ Pi-Camera-in-a-box uses raspivid to capture the video, FFmpeg to encode, and ngi
 
 Pi-Camera-in-a-box is fully Dockerized, removing the complexity of configuring all of these components manually. 
 
-**Note:** Pi-Camera-in-a-box compiles FFMpeg, and Nginx with the RTMP module from source. This can take a long time on a Pi (8+ hours). Consequently I have built these images and pushed them to Docker Hub, this will save you significant time. If you would rather build the containers yourself, replace the `docker-compose pull` below with `docker-compose build`.
+**Note:** Pi-Camera-in-a-box compiles FFMpeg, and Nginx with the RTMP module from source. This can take a long time on a Pi (8+ hours). Consequently I have built these images and pushed them to Docker Hub, this will save you significant time. If you would rather build the containers yourself, replace the `docker compose pull` below with `docker compose build`.
 
 ### Pre-Requisites
+
 1. Vanilla Raspberry Pi running Raspian Stretch Light. Needs to be connected to the network, with SSH access enabled. To configure a headless Pi with SSH access enabled and Wi-Fi configured, see [this post](https://www.raspberrypi.org/forums/viewtopic.php?t=191252)
 2. Raspberry Pi Camera Module connected and enabled through raspi-config
 
 ### Recommendations
+
 1. Make sure you have performed basic security hardening on your Pi (default password, SSH keys, etc)
 2. This project does not currently implement HTTPS. If you are accessing externally, perform either over VPN or a Reverse Proxy with SSL enabled
 
 ### Installation Instructions - Quickest Way
+
     ## Upgrade System
     apt-get update && apt-get upgrade -y
     
@@ -28,8 +31,8 @@ Pi-Camera-in-a-box is fully Dockerized, removing the complexity of configuring a
     ## Install Docker
     curl -sSL https://get.docker.com | sh
     
-    ## Install docker-compose
-    pip install docker-compose
+    ## Install docker compose
+    pip install docker compose
     
     ## Clone this Repository
     git clone https://github.com/benjamin-maynard/Pi-Camera-in-a-box.git
@@ -41,10 +44,10 @@ Pi-Camera-in-a-box is fully Dockerized, removing the complexity of configuring a
     nano config
     
     ## Pull Pre-Compiled Images - This will also take a long time.
-    docker-compose pull
+    docker compose pull
     
     ## Start Containers
-    docker-compose up -d
+    docker compose up -d
 
 Wait around 60 seconds, and then visit http://YOUR-CAMERA-IP/ui. You will be prompted for the credentials that you earlier defined. You should now be able to see the live feed from your camera.
 
