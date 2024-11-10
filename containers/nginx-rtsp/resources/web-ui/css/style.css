@@ -12,3 +12,9 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+.center {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
