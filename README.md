@@ -26,7 +26,7 @@ Pi-Camera-in-a-box is fully Dockerized, removing the complexity of configuring a
     apt-get update && apt-get upgrade -y
     
     ## Install Git, Python, Python-PIP
-    apt-get install git python-pip -y
+    apt-get install git python3-pip -y
     
     ## Install Docker
     curl -sSL https://get.docker.com | sh
