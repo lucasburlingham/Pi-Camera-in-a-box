@@ -1,4 +1,4 @@
-## Pi-Camera-in-a-box
+# Pi-Camera-in-a-box
 
 **Current Version:** 1.00 [(Changelog)](Changelog.md)
 
@@ -10,17 +10,17 @@ Pi-Camera-in-a-box is fully Dockerized, removing the complexity of configuring a
 
 **Note:** Pi-Camera-in-a-box compiles FFMpeg, and Nginx with the RTMP module from source. This can take a long time on a Pi (8+ hours). Consequently I have built these images and pushed them to Docker Hub, this will save you significant time. If you would rather build the containers yourself, replace the `docker compose pull` below with `docker compose build`.
 
-### Pre-Requisites
+## Pre-Requisites
 
 1. Vanilla Raspberry Pi running Raspian Stretch Light. Needs to be connected to the network, with SSH access enabled. To configure a headless Pi with SSH access enabled and Wi-Fi configured, see [this post](https://www.raspberrypi.org/forums/viewtopic.php?t=191252)
 2. Raspberry Pi Camera Module connected and enabled through raspi-config
 
-### Recommendations
+## Recommendations
 
 1. Make sure you have performed basic security hardening on your Pi (default password, SSH keys, etc)
 2. This project does not currently implement HTTPS. If you are accessing externally, perform either over VPN or a Reverse Proxy with SSL enabled
 
-### Installation Instructions - Quickest Way
+## Installation Instructions - Quickest Way
 
     ## Upgrade System
     apt-get update && apt-get upgrade -y
@@ -54,6 +54,7 @@ Wait around 60 seconds, and then visit http://YOUR-CAMERA-IP/ui. You will be pro
 **IMPORTANT: Please make sure you append the /ui to the web address. Otherwise you will be presented with a 401 error. I will implement a redirect at some point in the near future.**
 
 ## Configuration Settings
+
 | Setting               | Purpose       |
 | --------------------- |---------------|
 | CAMERA_NAME           | This setting configures the camera name. It will be displayed in the Web UI to help you identify the camera. |
@@ -65,10 +66,10 @@ Wait around 60 seconds, and then visit http://YOUR-CAMERA-IP/ui. You will be pro
 | FLIP_HORIZONTALLY     | **(yes/no)** Should the video be flipped horizontally (mirror view). This is useful depending on the orientation of your camera              |
 | FLIP_VERTICALLY       | **(yes/no)** Should the video be flipped vertically? This is useful if your camera is mounted upside down               |
 
+## Screenshot
 
-
-### Screenshot
 ![Pi-Camera-in-a-box](Screenshot.png?raw=true "Pi-Camera-in-a-box")
 
-### Thanks...
+## Thanks
+
 - [Peer 5 Article](https://docs.peer5.com/guides/setting-up-hls-live-streaming-server-using-nginx/): For the head start on the nginx HLS config
