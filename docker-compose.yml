@@ -2,7 +2,7 @@ services:
 
    nginx-rtsp:
     build: ./containers/nginx-rtsp
-    image: benjaminmaynard/nginx-rtsp:1.0
+    image: immobileunwaryrockstar/nginx-rtsp:latest
     ports:
      - "80:80"
     expose:
