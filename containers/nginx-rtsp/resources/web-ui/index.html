@@ -11,12 +11,8 @@
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen">
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen">
 
-	<!-- VideoJS  -->
-	<link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
-	<script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
-	<!-- Included since Video.js 7 per https://www.npmjs.com/package/@leonchabbey/rio-videojs-http-streaming -->
-	<!-- <script src="https://unpkg.com/@videojs/http-streaming@2.10.3/dist/videojs-http-streaming.min.js"></script> -->
-
+	<!-- https://github.com/video-dev/hls.js/  -->
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 
 <body>
@@ -32,26 +28,31 @@
 
 	<div class="section no-pad-bot" id="index-banner">
 
-		<div class="row">
+		<div class="row center">
 
 
-			<video id="Pi-Camera-in-a-box" class="video-js vjs-default-skin center" controls preload="auto" width="960"
-				height="540" data-setup='{}'>
-			</video>
 
-
+			<video id="video" height="640"></video>
 			<script>
-				const player = videojs('Pi-Camera-in-a-box');
-				player.src({
-					src: '../hls/stream.m3u8',
-					type: 'application/x-mpegURL'
-				});
+				var video = document.getElementById('video');
+				if (Hls.isSupported()) {
+					var hls = new Hls();
+					hls.loadSource('../hls/stream.m3u8');
+					hls.attachMedia(video);
+					hls.on(Hls.Events.MANIFEST_PARSED, function () {
+						video.play();
+					});
+				}
+				// hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+				// When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+				// This is using the built-in support of the plain video element, without using hls.js.
+				else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+					video.src = '../hls/stream.m3u8';
+					video.addEventListener('canplay', function () {
+						video.play();
+					});
+				}
 			</script>
-			<p class="vjs-no-js">
-				To view this video please enable JavaScript, and consider upgrading to a
-				web browser that
-				<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-			</p>
 
 		</div>
 		<br>
